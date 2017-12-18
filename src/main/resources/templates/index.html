@@ -6,12 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <script th:src="@{/webjars/vue/2.5.3-1/vue.js}"></script>
+    <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
 </head>
 <body>
-    some contents
+    some contents<br />
     
+    <label th:text="${thymeleaf_value}"></label>
     
     <div id="content">
+        <div v-for="d in datalist" v-bind:style="{backgroundColor:d.color}">
+            {{d.id}}
+            <input type="text" v-model="d.color"/>
+            
+        </div>
+        <button v-on:click="addList">Add List</button><br />
+        <button v-on:click="postlist">POST!</button><br />
+        <button v-on:click="getlist">GET!</button>
     </div>
+    <script th:src="@{/index.js}"></script>
 </body>
 </html>
